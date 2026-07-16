@@ -21,9 +21,10 @@ final class RemoteScriptInstaller: ObservableObject {
     @Published private(set) var installedPath = ""
     @Published private(set) var statusMessage = "確認中…"
 
-    private let scriptFolderName = "SIGNAL_FLOW_Clip_Watcher"
-    private let versionFileName = "signal_flow_version.txt"
-    private let bundledVersion = "3.0"
+    private let scriptFolderName = "LiveStopwatch_Clip_Watcher"
+    private let legacyScriptFolderName = "SIGNAL_FLOW_Clip_Watcher"
+    private let versionFileName = "live_stopwatch_version.txt"
+    private let bundledVersion = "3.0.0"
 
     init() {
         checkStatus()
@@ -116,6 +117,16 @@ final class RemoteScriptInstaller: ObservableObject {
                 to: destination
             )
 
+            // Remove the legacy script after the new script has been installed
+            // successfully. This prevents duplicate Control Surface entries.
+            let legacyDestination = parent.appendingPathComponent(
+                legacyScriptFolderName
+            )
+            if legacyDestination != destination,
+               FileManager.default.fileExists(atPath: legacyDestination.path) {
+                try? FileManager.default.removeItem(at: legacyDestination)
+            }
+
             // Ensure the Python source remains readable by Ableton Live.
             try? FileManager.default.setAttributes(
                 [.posixPermissions: 0o755],
@@ -124,7 +135,7 @@ final class RemoteScriptInstaller: ObservableObject {
 
             for fileName in [
                 "__init__.py",
-                "signal_flow_clip_watcher.py",
+                "live_stopwatch_clip_watcher.py",
                 versionFileName,
             ] {
                 let fileURL = destination.appendingPathComponent(
@@ -190,7 +201,7 @@ final class RemoteScriptInstaller: ObservableObject {
                 "__init__.py"
             )
             let script = candidate.appendingPathComponent(
-                "signal_flow_clip_watcher.py"
+                "live_stopwatch_clip_watcher.py"
             )
 
             if FileManager.default.fileExists(

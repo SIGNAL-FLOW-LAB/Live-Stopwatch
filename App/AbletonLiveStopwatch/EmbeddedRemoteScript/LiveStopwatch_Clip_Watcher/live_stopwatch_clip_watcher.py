@@ -1,5 +1,5 @@
 # Ableton Live Remote Script
-# Ableton Live Stopwatch by SIGNAL FLOW v2.24
+# Live Stopwatch Clip Watcher v3.0.0 RC2
 
 import json
 import socket
@@ -15,7 +15,7 @@ POLL_INTERVAL_TICKS = 2
 INITIAL_SCENE_ONLY_SECONDS = 3.0
 
 
-class SignalFlowClipWatcher(ControlSurface):
+class LiveStopwatchClipWatcher(ControlSurface):
     def __init__(self, c_instance):
         super().__init__(c_instance)
 
@@ -33,7 +33,7 @@ class SignalFlowClipWatcher(ControlSurface):
 
             self._send({
                 "type": "hello",
-                "version": "3.0-rc1",
+                "version": "3.0.0",
             })
 
             self.schedule_message(
@@ -46,7 +46,7 @@ class SignalFlowClipWatcher(ControlSurface):
 
         if len(tracks) <= PLAYBACK_TRACK_INDEX:
             self.log_message(
-                "SIGNAL FLOW: playback Track 1 not found"
+                "Live Stopwatch: playback Track 1 not found"
             )
             return
 
@@ -129,7 +129,7 @@ class SignalFlowClipWatcher(ControlSurface):
 
         except Exception as error:
             self.log_message(
-                "SIGNAL FLOW selection error: {}".format(error)
+                "Live Stopwatch selection error: {}".format(error)
             )
 
         self.schedule_message(
@@ -235,7 +235,7 @@ class SignalFlowClipWatcher(ControlSurface):
 
         except Exception as error:
             self.log_message(
-                "SIGNAL FLOW UDP error: {}".format(error)
+                "Live Stopwatch UDP error: {}".format(error)
             )
 
     def disconnect(self):

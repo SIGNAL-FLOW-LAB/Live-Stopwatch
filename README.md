@@ -1,6 +1,6 @@
 # Live Stopwatch v3.0.0.1
 
-Ableton LiveのSession Viewを再生した際に使用するストップウォッチ、PA・イベントオペレーター向けのmacOSアプリです。
+Ableton LiveのSession Viewを本番再生に使用するPA・イベントオペレーター向けのmacOSアプリです。
 
 ## 対応方針
 
@@ -35,7 +35,7 @@ App/
   AbletonLiveStopwatch/
 
 RemoteScript/
-  SIGNAL_FLOW_Clip_Watcher/
+  LiveStopwatch_Clip_Watcher/
   アプリ内の「Remote Script セットアップ」
 
 Docs/

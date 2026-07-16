@@ -22,3 +22,9 @@
 - コメントを追加
 - 独自ライセンスを追加
 - Git管理用ファイルを追加
+
+### Remote Script naming cleanup
+- Renamed the bundled and installed Remote Script to `LiveStopwatch_Clip_Watcher`.
+- Renamed the Python module to `live_stopwatch_clip_watcher.py`.
+- Renamed the version marker to `live_stopwatch_version.txt`.
+- Removes the legacy `SIGNAL_FLOW_Clip_Watcher` folder after a successful install/update to prevent duplicate Ableton Control Surface entries.

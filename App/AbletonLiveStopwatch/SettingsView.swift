@@ -83,12 +83,20 @@ struct SettingsView: View {
                     .padding(.top, 4)
 
                 VStack(alignment: .leading, spacing: 5) {
-                    Text(remoteScriptInstaller.statusMessage)
-                        .fontWeight(.semibold)
-                    Text(remoteScriptInstaller.installedPath)
-                        .font(.system(size: 11, design: .monospaced))
-                        .foregroundColor(.secondary)
-                        .lineLimit(2)
+                    if remoteScriptInstaller.state == .installed || remoteScriptInstaller.state == .success {
+                        Text("インストール済み")
+                            .fontWeight(.semibold)
+                        Text("LiveStopwatch_Clip_Watcher")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                        Text("Version 3.0.0")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    } else {
+                        Text(remoteScriptInstaller.statusMessage)
+                            .fontWeight(.semibold)
+                    }
+
                     Text("Live接続中 Script：v\(midi.remoteScriptVersion)")
                         .font(.caption)
                         .foregroundColor(.secondary)
@@ -152,12 +160,29 @@ struct SettingsView: View {
                 Spacer()
             }
 
-            VStack(alignment: .leading, spacing: 5) {
+            VStack(alignment: .leading, spacing: 12) {
                 Text("IAC Driverの準備")
                     .font(.caption)
                     .fontWeight(.semibold)
-                Text("Finderの［アプリケーション］→［ユーティリティ］→［Audio MIDI設定］を開きます。［ウインドウ］→［MIDIスタジオを表示］を選び、［IAC Driver］をダブルクリックして［装置はオンライン］にチェックしてください。ポート一覧に［バス1］があることも確認します。")
-                Text("次にAbleton Liveの［環境設定／Preferences］→［Link Tempo MIDI］で、出力：IAC Driver バス1の［Sync］をONにします。最後に、この画面の入力ポートで［IAC Driver バス1］を選び［接続］を押してください。")
+
+                VStack(alignment: .leading, spacing: 7) {
+                    Text("1. Finderで［アプリケーション］→［ユーティリティ］→［Audio MIDI設定］を開きます。")
+                    Text("2. メニューバーの［ウインドウ］→［MIDIスタジオを表示］を選びます。")
+                    Text("3. ［IAC Driver］をダブルクリックし、［装置はオンライン］にチェックします。")
+                    Text("4. ポート一覧に［バス1］があることを確認します。")
+                }
+
+                Text("Ableton Liveの設定")
+                    .font(.caption)
+                    .fontWeight(.semibold)
+                    .padding(.top, 2)
+
+                VStack(alignment: .leading, spacing: 7) {
+                    Text("1. Ableton Liveの［環境設定／Preferences］→［Link Tempo MIDI］を開きます。")
+                    Text("2. 出力ポート［IAC Driver バス1］の［Sync］をONにします。")
+                    Text("3. Live Stopwatchへ戻り、入力ポートで［IAC Driver バス1］を選択します。")
+                    Text("4. ［接続］を押し、状態が［接続中］になることを確認します。")
+                }
             }
             .font(.caption)
             .foregroundColor(.secondary)
@@ -172,8 +197,8 @@ struct SettingsView: View {
 
             HStack(spacing: 22) {
                 testResult("Remote Script", passed: remotePassed)
-                testResult("START", passed: startPassed)
-                testResult("STOP", passed: stopPassed)
+                testResult("MIDI START", passed: startPassed)
+                testResult("MIDI STOP", passed: stopPassed)
                 Spacer()
                 Button(testStartedAt == nil ? "テスト開始" : "再テスト") {
                     testStartedAt = Date()
@@ -336,7 +361,7 @@ struct InitialSetupView: View {
             Text("Ableton Live側の設定").font(.title3).fontWeight(.semibold)
             setupLine("1", "Ableton Liveの環境設定／Preferencesを開く")
             setupLine("2", "Link Tempo MIDIタブを開く")
-            setupLine("3", "Control Surfaceで SIGNAL_FLOW_Clip_Watcher を選択")
+            setupLine("3", "Control Surfaceで LiveStopwatch_Clip_Watcher を選択")
             setupLine("4", "Input／Outputは None のままで構いません")
         }
     }
