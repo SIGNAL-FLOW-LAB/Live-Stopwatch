@@ -15,6 +15,9 @@ final class MIDIController: ObservableObject {
     @Published private(set) var isReceivingClock = false
     @Published private(set) var isRemoteScriptActive = false
     @Published private(set) var remoteScriptVersion = "未接続"
+    @Published private(set) var lastMIDIStartDate: Date?
+    @Published private(set) var lastMIDIStopDate: Date?
+    @Published private(set) var lastRemoteMessageDate: Date?
 
     @Published private(set) var currentSceneNumber: Int?
     @Published private(set) var currentSceneName = "曲情報待ち"
@@ -253,6 +256,7 @@ final class MIDIController: ObservableObject {
 
                         case 0xFA:
                             DispatchQueue.main.async {
+                                self.lastMIDIStartDate = Date()
                                 self.appendLog("MIDI START")
                                 self.stopwatch?.handleMIDIStart()
                             }
@@ -267,6 +271,7 @@ final class MIDIController: ObservableObject {
 
                         case 0xFC:
                             DispatchQueue.main.async {
+                                self.lastMIDIStopDate = Date()
                                 self.appendLog("MIDI STOP")
                                 self.stopwatch?.handleMIDIStop()
                             }
@@ -367,6 +372,7 @@ final class MIDIController: ObservableObject {
         }
 
         lastRemoteScriptDate = Date()
+        lastRemoteMessageDate = lastRemoteScriptDate
         isRemoteScriptActive = true
 
         switch type {

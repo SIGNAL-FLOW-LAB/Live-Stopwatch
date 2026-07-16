@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.0
+- Formal release with persistent settings, window restoration, onboarding, automatic Remote Script installation, setup guidance, connection test and SIGNAL FLOW branding.
+
+
 ## v3.0 RC1.1
 
 - Settings header now uses the application icon.

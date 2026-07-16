@@ -9,13 +9,30 @@ final class StopwatchModel: ObservableObject {
     @Published private(set) var elapsed: TimeInterval = 0
     @Published private(set) var isRunning = false
 
-    @Published var resetOnMIDIStop = true
+    @Published var resetOnMIDIStop: Bool {
+        didSet {
+            UserDefaults.standard.set(
+                resetOnMIDIStop,
+                forKey: "ResetOnMIDIStop"
+            )
+        }
+    }
 
     private var accumulated: TimeInterval = 0
     private var startedAtUptime: TimeInterval?
     private var timer: DispatchSourceTimer?
 
     init() {
+        if UserDefaults.standard.object(
+            forKey: "ResetOnMIDIStop"
+        ) == nil {
+            resetOnMIDIStop = true
+        } else {
+            resetOnMIDIStop = UserDefaults.standard.bool(
+                forKey: "ResetOnMIDIStop"
+            )
+        }
+
         startDisplayTimer()
     }
 

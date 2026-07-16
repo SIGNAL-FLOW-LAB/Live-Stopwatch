@@ -7,10 +7,11 @@ struct ContentView: View {
     @EnvironmentObject private var stopwatch: StopwatchModel
     @EnvironmentObject private var remoteScriptInstaller: RemoteScriptInstaller
     @State private var showSettingsSheet = false
-    @State private var didApplyInitialWindowSize = false
+    @State private var showInitialSetup = false
+    @State private var didConfigureWindow = false
 
     @AppStorage("AlwaysOnTop") private var alwaysOnTop = false
-    @AppStorage("HasSeenIntegratedSettings") private var hasSeenIntegratedSettings = false
+    @AppStorage("HasCompletedInitialSetupV3") private var hasCompletedInitialSetup = false
 
     var body: some View {
         GeometryReader { geometry in
@@ -77,17 +78,17 @@ struct ContentView: View {
             .environmentObject(stopwatch)
             .environmentObject(remoteScriptInstaller)
         }
+        .sheet(isPresented: $showInitialSetup) {
+            InitialSetupView(isPresented: $showInitialSetup)
+                .environmentObject(midi)
+                .environmentObject(remoteScriptInstaller)
+        }
         .onAppear {
             remoteScriptInstaller.checkStatus()
 
-            if !hasSeenIntegratedSettings
-                || remoteScriptInstaller.state == .notInstalled
-                || remoteScriptInstaller.state == .updateAvailable {
-                DispatchQueue.main.asyncAfter(
-                    deadline: .now() + 0.35
-                ) {
-                    showSettingsSheet = true
-                    hasSeenIntegratedSettings = true
+            if !hasCompletedInitialSetup {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.45) {
+                    showInitialSetup = true
                 }
             }
         }
@@ -243,18 +244,14 @@ struct ContentView: View {
         window.styleMask.insert(.resizable)
         window.minSize = NSSize(width: 450, height: 280)
 
-        guard !didApplyInitialWindowSize else {
-            return
-        }
+        guard !didConfigureWindow else { return }
+        didConfigureWindow = true
 
-        didApplyInitialWindowSize = true
-
-        DispatchQueue.main.async {
-            window.setContentSize(
-                NSSize(width: 450, height: 280)
-            )
-            window.center()
-        }
+        // SwiftUI applies its default window size shortly after the view first
+        // appears. Restore after that pass, then observe move/resize events.
+        // This avoids the old behavior where the saved frame appeared briefly
+        // and was immediately replaced by the minimum-size centered window.
+        MainWindowFrameStore.shared.attach(to: window)
     }
 
     private func updateCurrentWindow() {
@@ -318,6 +315,96 @@ private struct StageButtonStyle: ButtonStyle {
                     : Color.white.opacity(0.14)
             )
             .cornerRadius(7)
+    }
+}
+
+private final class MainWindowFrameStore {
+    static let shared = MainWindowFrameStore()
+
+    private let defaults = UserDefaults.standard
+    private let frameKey = "LiveStopwatch.MainWindowFrame.v2"
+    private weak var observedWindow: NSWindow?
+    private var observers: [NSObjectProtocol] = []
+    private var isRestoring = false
+
+    private init() {}
+
+    func attach(to window: NSWindow) {
+        guard observedWindow !== window else { return }
+        stopObserving()
+        observedWindow = window
+
+        // Wait until WindowGroup has finished applying its own initial frame.
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) { [weak self, weak window] in
+            guard let self = self, let window = window else { return }
+            self.restore(window)
+            self.startObserving(window)
+        }
+    }
+
+    private func restore(_ window: NSWindow) {
+        isRestoring = true
+        defer { isRestoring = false }
+
+        if let value = defaults.string(forKey: frameKey) {
+            let savedFrame = NSRectFromString(value)
+            if savedFrame.width >= 450,
+               savedFrame.height >= 280,
+               isVisibleOnAnyScreen(savedFrame) {
+                window.setFrame(savedFrame, display: true)
+                return
+            }
+        }
+
+        window.setContentSize(NSSize(width: 450, height: 280))
+        window.center()
+        save(window)
+    }
+
+    private func startObserving(_ window: NSWindow) {
+        let center = NotificationCenter.default
+        observers.append(center.addObserver(
+            forName: NSWindow.didMoveNotification,
+            object: window,
+            queue: .main
+        ) { [weak self, weak window] _ in
+            guard let self = self, let window = window else { return }
+            self.save(window)
+        })
+        observers.append(center.addObserver(
+            forName: NSWindow.didResizeNotification,
+            object: window,
+            queue: .main
+        ) { [weak self, weak window] _ in
+            guard let self = self, let window = window else { return }
+            self.save(window)
+        })
+        observers.append(center.addObserver(
+            forName: NSApplication.willTerminateNotification,
+            object: nil,
+            queue: .main
+        ) { [weak self, weak window] _ in
+            guard let self = self, let window = window else { return }
+            self.save(window)
+        })
+    }
+
+    private func save(_ window: NSWindow) {
+        guard !isRestoring else { return }
+        defaults.set(NSStringFromRect(window.frame), forKey: frameKey)
+    }
+
+    private func isVisibleOnAnyScreen(_ frame: NSRect) -> Bool {
+        NSScreen.screens.contains { screen in
+            screen.visibleFrame.intersection(frame).width >= 80
+                && screen.visibleFrame.intersection(frame).height >= 80
+        }
+    }
+
+    private func stopObserving() {
+        let center = NotificationCenter.default
+        observers.forEach { center.removeObserver($0) }
+        observers.removeAll()
     }
 }
 

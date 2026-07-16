@@ -23,7 +23,7 @@ final class RemoteScriptInstaller: ObservableObject {
 
     private let scriptFolderName = "SIGNAL_FLOW_Clip_Watcher"
     private let versionFileName = "signal_flow_version.txt"
-    private let bundledVersion = "3.0-rc1"
+    private let bundledVersion = "3.0"
 
     init() {
         checkStatus()
