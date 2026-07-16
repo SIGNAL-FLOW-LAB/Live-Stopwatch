@@ -9,7 +9,6 @@ final class StopwatchModel: ObservableObject {
     @Published private(set) var elapsed: TimeInterval = 0
     @Published private(set) var isRunning = false
 
-    @Published var resetOnMIDIStart = true
     @Published var resetOnMIDIStop = true
 
     private var accumulated: TimeInterval = 0
@@ -25,10 +24,9 @@ final class StopwatchModel: ObservableObject {
     }
 
     func handleMIDIStart() {
-        if resetOnMIDIStart {
-            reset()
-        }
-        start()
+        // MIDI START is the beginning of a new playback run.
+        // Reset is intentionally part of the app's fixed behavior.
+        resetAndStart()
     }
 
     func handleMIDIContinue() {

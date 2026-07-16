@@ -1,4 +1,5 @@
 import SwiftUI
+import AppKit
 import CoreMIDI
 
 struct SettingsView: View {
@@ -51,15 +52,10 @@ struct SettingsView: View {
 
     private var header: some View {
         HStack(spacing: 14) {
-            Image(systemName: "stopwatch.fill")
-                .font(.system(size: 30))
-                .foregroundColor(
-                    Color(
-                        red: 0.0,
-                        green: 0.75,
-                        blue: 0.90
-                    )
-                )
+            Image(nsImage: NSApplication.shared.applicationIconImage)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 34, height: 34)
 
             VStack(alignment: .leading, spacing: 3) {
                 Text("Live Stopwatch")
@@ -77,15 +73,10 @@ struct SettingsView: View {
 
     private var generalSection: some View {
         SettingsCard(title: "General") {
-            Toggle("常に最前面", isOn: $alwaysOnTop)
+            Toggle("常に最前面に表示", isOn: $alwaysOnTop)
 
             Toggle(
-                "MIDI STARTで0へリセット",
-                isOn: $stopwatch.resetOnMIDIStart
-            )
-
-            Toggle(
-                "MIDI STOPで0へリセット",
+                "STOP受信時にタイマーを0:00へ戻す",
                 isOn: $stopwatch.resetOnMIDIStop
             )
         }
@@ -223,7 +214,7 @@ struct SettingsView: View {
                     Text("Live Stopwatch")
                     .fontWeight(.semibold)
 
-                    Text("Version 3.0 RC1")
+                    Text("Version 3.0 RC1.1")
                         .foregroundColor(.secondary)
 
                     Text("Copyright © 2026 SIGNAL FLOW")
