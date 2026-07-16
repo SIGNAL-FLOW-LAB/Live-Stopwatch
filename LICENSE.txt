@@ -1,0 +1,18 @@
+Copyright (c) 2026 SIGNAL FLOW / Kantaro Kobayashi
+
+All rights reserved.
+
+This software and its source code are proprietary.
+No part of this software may be copied, modified, redistributed,
+resold, reverse engineered, or incorporated into another product
+without prior written permission from the copyright holder.
+
+Purchasers may install and use the compiled application and included
+Ableton Remote Script on computers they personally own or control,
+subject to the terms supplied with the purchased product.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM,
+DAMAGES OR OTHER LIABILITY ARISING FROM THE SOFTWARE OR ITS USE.

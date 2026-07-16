@@ -1,0 +1,286 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B10000000000000000000001 /* AbletonLiveStopwatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20000000000000000000001 /* AbletonLiveStopwatchApp.swift */; };
+		B10000000000000000000002 /* StopwatchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20000000000000000000002 /* StopwatchModel.swift */; };
+		B10000000000000000000003 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20000000000000000000003 /* Models.swift */; };
+		B10000000000000000000004 /* MIDIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20000000000000000000004 /* MIDIController.swift */; };
+		B10000000000000000000005 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20000000000000000000005 /* ContentView.swift */; };
+		B10000000000000000000006 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20000000000000000000006 /* SettingsView.swift */; };
+		B10000000000000000000007 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B20000000000000000000008 /* CoreMIDI.framework */; };
+		B10000000000000000000008 /* Network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B20000000000000000000009 /* Network.framework */; };
+	B10000000000000000000009 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B20000000000000000000011 /* Assets.xcassets */; };
+		B10000000000000000000010 /* RemoteScriptInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20000000000000000000012 /* RemoteScriptInstaller.swift */; };
+		B10000000000000000000011 /* RemoteScriptSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20000000000000000000013 /* RemoteScriptSetupView.swift */; };
+		B10000000000000000000012 /* EmbeddedRemoteScript in Resources */ = {isa = PBXBuildFile; fileRef = B20000000000000000000014 /* EmbeddedRemoteScript */; };
+		B10000000000000000000013 /* StopwatchTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20000000000000000000015 /* StopwatchTextView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B20000000000000000000001 /* AbletonLiveStopwatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbletonLiveStopwatchApp.swift; sourceTree = "<group>"; };
+		B20000000000000000000002 /* StopwatchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchModel.swift; sourceTree = "<group>"; };
+		B20000000000000000000003 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		B20000000000000000000004 /* MIDIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIDIController.swift; sourceTree = "<group>"; };
+		B20000000000000000000005 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B20000000000000000000006 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		B20000000000000000000007 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B20000000000000000000008 /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
+		B20000000000000000000009 /* Network.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Network.framework; path = System/Library/Frameworks/Network.framework; sourceTree = SDKROOT; };
+		B20000000000000000000010 /* Live Stopwatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Live Stopwatch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+	B20000000000000000000011 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B20000000000000000000012 /* RemoteScriptInstaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteScriptInstaller.swift; sourceTree = "<group>"; };
+		B20000000000000000000013 /* RemoteScriptSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteScriptSetupView.swift; sourceTree = "<group>"; };
+		B20000000000000000000014 /* EmbeddedRemoteScript */ = {isa = PBXFileReference; lastKnownFileType = folder; path = EmbeddedRemoteScript; sourceTree = "<group>"; };
+		B20000000000000000000015 /* StopwatchTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchTextView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B30000000000000000000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B10000000000000000000007 /* CoreMIDI.framework in Frameworks */,
+				B10000000000000000000008 /* Network.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B40000000000000000000001 = {
+			isa = PBXGroup;
+			children = (
+				B40000000000000000000002 /* AbletonLiveStopwatch */,
+				B40000000000000000000003 /* Frameworks */,
+				B40000000000000000000004 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B40000000000000000000002 /* AbletonLiveStopwatch */ = {
+			isa = PBXGroup;
+			children = (
+				B20000000000000000000001 /* AbletonLiveStopwatchApp.swift */,
+				B20000000000000000000002 /* StopwatchModel.swift */,
+				B20000000000000000000003 /* Models.swift */,
+				B20000000000000000000004 /* MIDIController.swift */,
+				B20000000000000000000005 /* ContentView.swift */,
+				B20000000000000000000006 /* SettingsView.swift */,
+				B20000000000000000000007 /* Info.plist */,
+				B20000000000000000000011 /* Assets.xcassets */,
+				B20000000000000000000012 /* RemoteScriptInstaller.swift */,
+				B20000000000000000000013 /* RemoteScriptSetupView.swift */,
+				B20000000000000000000014 /* EmbeddedRemoteScript */,
+			);
+			path = AbletonLiveStopwatch;
+			sourceTree = "<group>";
+		};
+		B40000000000000000000003 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B20000000000000000000008 /* CoreMIDI.framework */,
+				B20000000000000000000009 /* Network.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B40000000000000000000004 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B20000000000000000000010 /* Live Stopwatch.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B50000000000000000000001 /* AbletonLiveStopwatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B90000000000000000000002 /* Build configuration list for PBXNativeTarget "AbletonLiveStopwatch" */;
+			buildPhases = (
+				B60000000000000000000001 /* Sources */,
+				B30000000000000000000001 /* Frameworks */,
+				B70000000000000000000001 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AbletonLiveStopwatch;
+			productName = "Live Stopwatch";
+			productReference = B20000000000000000000010 /* Live Stopwatch.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B80000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					B50000000000000000000001 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+				};
+			};
+			buildConfigurationList = B90000000000000000000001 /* Build configuration list for PBXProject "AbletonLiveStopwatch" */;
+			compatibilityVersion = "Xcode 12.0";
+			developmentRegion = ja;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				ja,
+				en,
+				Base,
+			);
+			mainGroup = B40000000000000000000001;
+			productRefGroup = B40000000000000000000004 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B50000000000000000000001 /* AbletonLiveStopwatch */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B70000000000000000000001 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B10000000000000000000009 /* Assets.xcassets in Resources */,
+				B10000000000000000000012 /* EmbeddedRemoteScript in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B60000000000000000000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B10000000000000000000001 /* AbletonLiveStopwatchApp.swift in Sources */,
+				B10000000000000000000002 /* StopwatchModel.swift in Sources */,
+				B10000000000000000000003 /* Models.swift in Sources */,
+				B10000000000000000000004 /* MIDIController.swift in Sources */,
+				B10000000000000000000005 /* ContentView.swift in Sources */,
+				B10000000000000000000006 /* SettingsView.swift in Sources */,
+				B10000000000000000000010 /* RemoteScriptInstaller.swift in Sources */,
+				B10000000000000000000011 /* RemoteScriptSetupView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		BA0000000000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.3;
+			};
+			name = Debug;
+		};
+		BA0000000000000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.3;
+			};
+			name = Release;
+		};
+		BA0000000000000000000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = AbletonLiveStopwatch/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.signalflow.AbletonLiveStopwatch;
+				PRODUCT_NAME = "Live Stopwatch";
+				SWIFT_VERSION = 5.3;
+			};
+			name = Debug;
+		};
+		BA0000000000000000000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = AbletonLiveStopwatch/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.signalflow.AbletonLiveStopwatch;
+				PRODUCT_NAME = "Live Stopwatch";
+				SWIFT_VERSION = 5.3;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B90000000000000000000001 /* Build configuration list for PBXProject "AbletonLiveStopwatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA0000000000000000000001 /* Debug */,
+				BA0000000000000000000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B90000000000000000000002 /* Build configuration list for PBXNativeTarget "AbletonLiveStopwatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA0000000000000000000003 /* Debug */,
+				BA0000000000000000000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B80000000000000000000001 /* Project object */;
+}
