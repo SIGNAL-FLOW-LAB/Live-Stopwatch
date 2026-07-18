@@ -1,5 +1,9 @@
 # Live Stopwatch v3.1.0
 
+Latest Version
+
+v3.1.0# Live Stopwatch v3.1.0
+
 Ableton LiveのSession Viewを本番再生に使用するPA・イベントオペレーター向けのmacOSアプリです。
 
 ## 対応方針
