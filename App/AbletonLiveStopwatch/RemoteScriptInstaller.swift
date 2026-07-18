@@ -24,7 +24,7 @@ final class RemoteScriptInstaller: ObservableObject {
     private let scriptFolderName = "LiveStopwatch_Clip_Watcher"
     private let legacyScriptFolderName = "SIGNAL_FLOW_Clip_Watcher"
     private let versionFileName = "live_stopwatch_version.txt"
-    private let bundledVersion = "3.0.0"
+    private let bundledVersion = "3.1.0"
 
     init() {
         checkStatus()

@@ -15,49 +15,45 @@ struct ContentView: View {
 
     var body: some View {
         GeometryReader { geometry in
-            let compact =
-                geometry.size.width < 650
-                || geometry.size.height < 400
+            let metrics = LayoutMetrics(size: geometry.size)
 
             VStack(spacing: 0) {
                 informationBlock(
                     label: "NOW PLAYING",
                     title: currentTitle,
-                    compact: compact,
+                    metrics: metrics,
                     primary: true
                 )
-                .frame(maxHeight: .infinity)
+                .frame(height: metrics.informationHeight)
 
-                divider(compact: compact)
+                divider(horizontalPadding: metrics.horizontalPadding)
 
                 Text(stopwatch.formattedTime)
                     .font(.system(
-                        size: timerFontSize(
-                            geometry.size,
-                            compact: compact
-                        ),
+                        size: metrics.timerFontSize,
                         weight: .heavy,
                         design: .monospaced
                     ))
                     .foregroundColor(.white)
-                    .minimumScaleFactor(0.12)
+                    .minimumScaleFactor(0.10)
                     .lineLimit(1)
+                    .allowsTightening(true)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .padding(.horizontal, metrics.horizontalPadding)
 
-                divider(compact: compact)
+                divider(horizontalPadding: metrics.horizontalPadding)
 
                 informationBlock(
                     label: "SELECTED",
                     title: selectedTitle,
-                    compact: compact,
+                    metrics: metrics,
                     primary: false
                 )
-                .frame(maxHeight: .infinity)
+                .frame(height: metrics.informationHeight)
 
-                divider(compact: compact)
+                divider(horizontalPadding: metrics.horizontalPadding)
 
-                statusBar(compact: compact)
-
+                statusBar(metrics: metrics)
             }
             .background(Color.black)
         }
@@ -69,11 +65,9 @@ struct ContentView: View {
             updateCurrentWindow()
         }
         .sheet(isPresented: $showSettingsSheet) {
-            SettingsView(
-                dismiss: {
-                    showSettingsSheet = false
-                }
-            )
+            SettingsView(dismiss: {
+                showSettingsSheet = false
+            })
             .environmentObject(midi)
             .environmentObject(stopwatch)
             .environmentObject(remoteScriptInstaller)
@@ -97,87 +91,79 @@ struct ContentView: View {
     private func informationBlock(
         label: String,
         title: String,
-        compact: Bool,
+        metrics: LayoutMetrics,
         primary: Bool
     ) -> some View {
-        VStack(alignment: .leading, spacing: compact ? 3 : 7) {
+        VStack(alignment: .leading, spacing: metrics.labelSpacing) {
             Text(label)
                 .font(.system(
-                    size: compact ? 8 : 13,
+                    size: metrics.labelFontSize,
                     weight: .bold,
                     design: .monospaced
                 ))
-                .foregroundColor(.secondary)
+                .foregroundColor(Color.white.opacity(0.48))
+                .lineLimit(1)
 
             Text(title)
                 .font(.system(
-                    size: compact
-                        ? (primary ? 17 : 14)
-                        : (primary ? 31 : 24),
-                    weight: primary ? .bold : .semibold
+                    size: primary
+                        ? metrics.primaryTitleFontSize
+                        : metrics.secondaryTitleFontSize,
+                    weight: primary ? .bold : .semibold,
+                    design: .default
                 ))
-                .foregroundColor(
-                    primary
-                        ? .white
-                        : Color.white.opacity(0.88)
-                )
+                .foregroundColor(primary ? .white : Color.white.opacity(0.90))
                 .lineLimit(1)
-                .minimumScaleFactor(0.4)
+                .minimumScaleFactor(0.24)
+                .allowsTightening(true)
         }
-        .frame(
-            maxWidth: .infinity,
-            maxHeight: .infinity,
-            alignment: .leading
-        )
-        .padding(.horizontal, compact ? 12 : 24)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+        .padding(.horizontal, metrics.horizontalPadding)
+        .padding(.vertical, metrics.informationVerticalPadding)
     }
 
-    private func divider(compact: Bool) -> some View {
+    private func divider(horizontalPadding: CGFloat) -> some View {
         Rectangle()
             .fill(Color.white.opacity(0.16))
             .frame(height: 1)
-            .padding(.horizontal, compact ? 12 : 24)
+            .padding(.horizontal, horizontalPadding)
     }
 
-    private func statusBar(compact: Bool) -> some View {
-        HStack(spacing: compact ? 9 : 24) {
+    private func statusBar(metrics: LayoutMetrics) -> some View {
+        HStack(spacing: metrics.statusSpacing) {
             StatusLamp(
                 label: "MIDI",
                 isOn: midi.connectedSourceID != nil,
                 color: .green,
-                compact: compact
+                compact: metrics.compact
             )
 
             StatusLamp(
                 label: "SCRIPT",
                 isOn: midi.isRemoteScriptActive,
-                color: Color(
-                    red: 0.0,
-                    green: 0.75,
-                    blue: 0.90
-                ),
-                compact: compact
+                color: Color(red: 0.0, green: 0.75, blue: 0.90),
+                compact: metrics.compact
             )
 
             StatusLamp(
                 label: "CLOCK",
                 isOn: midi.isReceivingClock,
                 color: .green,
-                compact: compact
+                compact: metrics.compact
             )
 
             StatusLamp(
                 label: "PLAY",
                 isOn: stopwatch.isRunning,
                 color: .green,
-                compact: compact
+                compact: metrics.compact
             )
 
             StatusLamp(
                 label: "STOP",
                 isOn: !stopwatch.isRunning,
                 color: .red,
-                compact: compact
+                compact: metrics.compact
             )
 
             Spacer(minLength: 3)
@@ -187,19 +173,19 @@ struct ContentView: View {
             }) {
                 Image(systemName: "gearshape.fill")
                     .font(.system(
-                        size: compact ? 14 : 20,
+                        size: metrics.gearFontSize,
                         weight: .semibold
                     ))
                     .foregroundColor(Color.gray.opacity(0.78))
                     .frame(
-                        width: compact ? 25 : 34,
-                        height: compact ? 25 : 34
+                        width: metrics.gearHitSize,
+                        height: metrics.gearHitSize
                     )
             }
             .buttonStyle(PlainButtonStyle())
         }
-        .padding(.horizontal, compact ? 10 : 24)
-        .frame(height: compact ? 38 : 66)
+        .padding(.horizontal, metrics.statusHorizontalPadding)
+        .frame(height: metrics.statusBarHeight)
     }
 
     private var currentTitle: String {
@@ -207,11 +193,7 @@ struct ContentView: View {
             return midi.currentSceneName
         }
 
-        return String(
-            format: "%02d   %@",
-            number,
-            midi.currentSceneName
-        )
+        return String(format: "%02d   %@", number, midi.currentSceneName)
     }
 
     private var selectedTitle: String {
@@ -219,23 +201,7 @@ struct ContentView: View {
             return midi.selectedItemName
         }
 
-        return String(
-            format: "%02d   %@",
-            number,
-            midi.selectedItemName
-        )
-    }
-
-
-    private func timerFontSize(
-        _ size: CGSize,
-        compact: Bool
-    ) -> CGFloat {
-        if compact {
-            return min(size.width * 0.205, size.height * 0.34)
-        }
-
-        return min(size.width * 0.215, size.height * 0.37)
+        return String(format: "%02d   %@", number, midi.selectedItemName)
     }
 
     private func updateWindow(_ window: NSWindow) {
@@ -246,11 +212,6 @@ struct ContentView: View {
 
         guard !didConfigureWindow else { return }
         didConfigureWindow = true
-
-        // SwiftUI applies its default window size shortly after the view first
-        // appears. Restore after that pass, then observe move/resize events.
-        // This avoids the old behavior where the saved frame appeared briefly
-        // and was immediately replaced by the minimum-size centered window.
         MainWindowFrameStore.shared.attach(to: window)
     }
 
@@ -260,6 +221,53 @@ struct ContentView: View {
         }
 
         updateWindow(window)
+    }
+}
+
+private struct LayoutMetrics {
+    let compact: Bool
+    let scale: CGFloat
+    let horizontalPadding: CGFloat
+    let informationVerticalPadding: CGFloat
+    let informationHeight: CGFloat
+    let labelSpacing: CGFloat
+    let labelFontSize: CGFloat
+    let primaryTitleFontSize: CGFloat
+    let secondaryTitleFontSize: CGFloat
+    let timerFontSize: CGFloat
+    let statusSpacing: CGFloat
+    let statusHorizontalPadding: CGFloat
+    let statusBarHeight: CGFloat
+    let gearFontSize: CGFloat
+    let gearHitSize: CGFloat
+
+    init(size: CGSize) {
+        compact = size.width < 650 || size.height < 400
+
+        let widthScale = size.width / 900.0
+        let heightScale = size.height / 560.0
+        scale = min(max(min(widthScale, heightScale), 0.72), 2.55)
+
+        horizontalPadding = min(max(18.0 * scale, 12.0), 52.0)
+        informationVerticalPadding = min(max(10.0 * scale, 6.0), 26.0)
+        informationHeight = min(
+            max(size.height * (compact ? 0.205 : 0.215), compact ? 56.0 : 78.0),
+            250.0
+        )
+        labelSpacing = min(max(6.0 * scale, 3.0), 15.0)
+        labelFontSize = min(max(12.0 * scale, 8.0), 30.0)
+        primaryTitleFontSize = min(max(30.0 * scale, 17.0), 78.0)
+        secondaryTitleFontSize = min(max(24.0 * scale, 14.0), 64.0)
+
+        let widthBasedTimer = size.width * 0.205
+        let heightBasedTimer = size.height * (compact ? 0.31 : 0.34)
+        timerFontSize = min(max(min(widthBasedTimer, heightBasedTimer), 54.0), 430.0)
+
+        statusSpacing = compact ? 9.0 : min(max(22.0 * scale, 18.0), 42.0)
+        statusHorizontalPadding = compact ? 10.0 : horizontalPadding
+        statusBarHeight = compact ? 38.0 : min(max(62.0 * scale, 58.0), 92.0)
+        gearFontSize = compact ? 14.0 : min(max(19.0 * scale, 18.0), 31.0)
+        gearHitSize = compact ? 25.0 : min(max(34.0 * scale, 34.0), 52.0)
     }
 }
 

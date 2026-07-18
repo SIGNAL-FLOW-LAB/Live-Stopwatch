@@ -1,5 +1,5 @@
 # Ableton Live Remote Script
-# Live Stopwatch Clip Watcher v3.0.0 RC2
+# Live Stopwatch Clip Watcher v3.1.0
 
 import json
 import socket
@@ -33,7 +33,7 @@ class LiveStopwatchClipWatcher(ControlSurface):
 
             self._send({
                 "type": "hello",
-                "version": "3.0.0",
+                "version": "3.1.0",
             })
 
             self.schedule_message(

@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.1.0
+
+- Responsive scaling for NOW PLAYING and SELECTED labels and titles.
+- Rebalanced full-screen layout so timer and scene information scale together.
+- Improved long-title fitting and minimum readable sizes.
+- Updated app and bundled Remote Script versions to 3.1.0.
+
 ## 3.0.0
 - Formal release with persistent settings, window restoration, onboarding, automatic Remote Script installation, setup guidance, connection test and SIGNAL FLOW branding.
 

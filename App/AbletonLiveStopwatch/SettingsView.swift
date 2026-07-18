@@ -89,7 +89,7 @@ struct SettingsView: View {
                         Text("LiveStopwatch_Clip_Watcher")
                             .font(.caption)
                             .foregroundColor(.secondary)
-                        Text("Version 3.0.0")
+                        Text("Version 3.1.0")
                             .font(.caption)
                             .foregroundColor(.secondary)
                     } else {
@@ -240,7 +240,7 @@ struct SettingsView: View {
                     .frame(width: 58, height: 58)
                 VStack(alignment: .leading, spacing: 5) {
                     Text("Live Stopwatch").fontWeight(.semibold)
-                    Text("Version 3.0.0").foregroundColor(.secondary)
+                    Text("Version 3.1.0").foregroundColor(.secondary)
                     Text("Copyright © 2026 SIGNAL FLOW")
                         .font(.caption)
                         .foregroundColor(.secondary)
