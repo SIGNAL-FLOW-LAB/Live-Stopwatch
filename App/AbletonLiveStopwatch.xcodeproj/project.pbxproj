@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		387663FD3010B7C2008FB9C1 /* SFTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387663FC3010B7C2008FB9C1 /* SFTheme.swift */; };
+		387663FF3010B82A008FB9C1 /* SFFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387663FE3010B82A008FB9C1 /* SFFonts.swift */; };
+		387664013011ECD0008FB9C1 /* SFAboutCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387664003011ECC1008FB9C1 /* SFAboutCard.swift */; };
 		B10000000000000000000001 /* AbletonLiveStopwatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20000000000000000000001 /* AbletonLiveStopwatchApp.swift */; };
 		B10000000000000000000002 /* StopwatchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20000000000000000000002 /* StopwatchModel.swift */; };
 		B10000000000000000000003 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20000000000000000000003 /* Models.swift */; };
@@ -15,14 +18,16 @@
 		B10000000000000000000006 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20000000000000000000006 /* SettingsView.swift */; };
 		B10000000000000000000007 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B20000000000000000000008 /* CoreMIDI.framework */; };
 		B10000000000000000000008 /* Network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B20000000000000000000009 /* Network.framework */; };
-	B10000000000000000000009 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B20000000000000000000011 /* Assets.xcassets */; };
+		B10000000000000000000009 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B20000000000000000000011 /* Assets.xcassets */; };
 		B10000000000000000000010 /* RemoteScriptInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20000000000000000000012 /* RemoteScriptInstaller.swift */; };
 		B10000000000000000000011 /* RemoteScriptSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20000000000000000000013 /* RemoteScriptSetupView.swift */; };
 		B10000000000000000000012 /* EmbeddedRemoteScript in Resources */ = {isa = PBXBuildFile; fileRef = B20000000000000000000014 /* EmbeddedRemoteScript */; };
-		B10000000000000000000013 /* StopwatchTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20000000000000000000015 /* StopwatchTextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		387663FC3010B7C2008FB9C1 /* SFTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFTheme.swift; sourceTree = "<group>"; };
+		387663FE3010B82A008FB9C1 /* SFFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFFonts.swift; sourceTree = "<group>"; };
+		387664003011ECC1008FB9C1 /* SFAboutCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFAboutCard.swift; sourceTree = "<group>"; };
 		B20000000000000000000001 /* AbletonLiveStopwatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbletonLiveStopwatchApp.swift; sourceTree = "<group>"; };
 		B20000000000000000000002 /* StopwatchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchModel.swift; sourceTree = "<group>"; };
 		B20000000000000000000003 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
@@ -33,11 +38,10 @@
 		B20000000000000000000008 /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 		B20000000000000000000009 /* Network.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Network.framework; path = System/Library/Frameworks/Network.framework; sourceTree = SDKROOT; };
 		B20000000000000000000010 /* Live Stopwatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Live Stopwatch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-	B20000000000000000000011 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B20000000000000000000011 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B20000000000000000000012 /* RemoteScriptInstaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteScriptInstaller.swift; sourceTree = "<group>"; };
 		B20000000000000000000013 /* RemoteScriptSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteScriptSetupView.swift; sourceTree = "<group>"; };
 		B20000000000000000000014 /* EmbeddedRemoteScript */ = {isa = PBXFileReference; lastKnownFileType = folder; path = EmbeddedRemoteScript; sourceTree = "<group>"; };
-		B20000000000000000000015 /* StopwatchTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,9 @@
 		B40000000000000000000001 = {
 			isa = PBXGroup;
 			children = (
+				387663FC3010B7C2008FB9C1 /* SFTheme.swift */,
+				387663FE3010B82A008FB9C1 /* SFFonts.swift */,
+				387664003011ECC1008FB9C1 /* SFAboutCard.swift */,
 				B40000000000000000000002 /* AbletonLiveStopwatch */,
 				B40000000000000000000003 /* Frameworks */,
 				B40000000000000000000004 /* Products */,
@@ -123,8 +130,9 @@
 		B80000000000000000000001 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1240;
+				LastUpgradeCheck = 2630;
 				TargetAttributes = {
 					B50000000000000000000001 = {
 						CreatedOnToolsVersion = 12.4;
@@ -169,6 +177,9 @@
 			files = (
 				B10000000000000000000001 /* AbletonLiveStopwatchApp.swift in Sources */,
 				B10000000000000000000002 /* StopwatchModel.swift in Sources */,
+				387664013011ECD0008FB9C1 /* SFAboutCard.swift in Sources */,
+				387663FD3010B7C2008FB9C1 /* SFTheme.swift in Sources */,
+				387663FF3010B82A008FB9C1 /* SFFonts.swift in Sources */,
 				B10000000000000000000003 /* Models.swift in Sources */,
 				B10000000000000000000004 /* MIDIController.swift in Sources */,
 				B10000000000000000000005 /* ContentView.swift in Sources */,
@@ -186,16 +197,46 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.3;
@@ -207,14 +248,44 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.3;
@@ -224,11 +295,13 @@
 		BA0000000000000000000003 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = AbletonLiveStopwatch/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "SIGNAL FLOW Live Stopwatch";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -243,11 +316,13 @@
 		BA0000000000000000000004 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = AbletonLiveStopwatch/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "SIGNAL FLOW Live Stopwatch";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",

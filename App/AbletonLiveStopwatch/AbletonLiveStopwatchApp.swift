@@ -1,14 +1,14 @@
 import SwiftUI
 
 @main
-struct AbletonLiveStopwatchApp: App {
+struct SignalFlowLiveStopwatchApp: App {
     @StateObject private var midiController = MIDIController()
     @StateObject private var stopwatch = StopwatchModel()
     @StateObject private var remoteScriptInstaller =
         RemoteScriptInstaller()
 
     var body: some Scene {
-        WindowGroup("Live Stopwatch") {
+        WindowGroup("SIGNAL FLOW Live Stopwatch") {
             ContentView()
                 .environmentObject(midiController)
                 .environmentObject(stopwatch)
